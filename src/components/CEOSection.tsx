@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import ceoImg from "@/assets/ceo.jpg";
 
+const CEO_NAME = "Mr Luyanda Khwalo Matandabuzo";
+
 const consultants = [
   { name: "Branch Consultant", branch: "East London", img: null },
   { name: "Branch Consultant", branch: "Mthatha", img: null },
@@ -40,10 +42,13 @@ const CEOSection = () => (
       <motion.div {...fadeUpCard} className="max-w-4xl mx-auto mb-20">
         <div className="flex flex-col md:flex-row gap-8 items-center bg-card border border-border rounded-lg overflow-hidden">
           <div className="md:w-1/3">
-            <img src={ceoImg} alt="CEO" className="w-full aspect-[3/4] object-cover" />
+            <img src={ceoImg} alt={CEO_NAME} className="w-full aspect-[3/4] object-cover" />
+            <div className="p-6 bg-card border-t border-border">
+              <p className="font-display font-bold text-foreground">{CEO_NAME}</p>
+              <p className="text-gold text-xs uppercase tracking-widest">Chief Executive Officer</p>
+            </div>
           </div>
           <div className="md:w-2/3 p-8">
-            <p className="text-gold text-sm tracking-widest uppercase mb-2">Chief Executive Officer</p>
             <h3 className="font-display text-3xl font-bold text-foreground mb-4">CEO's Message</h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
               "At Khwalo Group, we believe every life deserves to be celebrated with dignity and respect.
