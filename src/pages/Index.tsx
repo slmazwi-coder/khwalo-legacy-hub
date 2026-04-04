@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
+import ServicesShowcase from "@/components/ServicesShowcase";
 import FleetSection from "@/components/FleetSection";
 import BurialPlans from "@/components/BurialPlans";
 import ApplicationForm from "@/components/ApplicationForm";
@@ -18,6 +19,7 @@ const Index = () => (
 
     {/* Services (includes Fleet below on the page) */}
     <ServicesSection />
+    <ServicesShowcase />
     <FleetSection />
 
     {/* Plans (apply form is part of plans journey) */}
