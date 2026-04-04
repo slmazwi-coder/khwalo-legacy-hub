@@ -26,6 +26,12 @@ const fadeUpItem = (i: number) =>
     transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
   }) as const;
 
+const tabGridMotion = {
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.35, ease: "easeOut" },
+} as const;
+
 const ServicesShowcase = () => {
   const tabs = useMemo(
     () => [
@@ -89,9 +95,9 @@ const ServicesShowcase = () => {
 
         <motion.div
           key={active}
-          initial= opacity: 0, y: 10 
-          animate= opacity: 1, y: 0 
-          transition= duration: 0.35 
+          initial={tabGridMotion.initial}
+          animate={tabGridMotion.animate}
+          transition={tabGridMotion.transition}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {current.items.map((item, i) => (
