@@ -5,7 +5,13 @@ const plans = [
   {
     name: "Essential Plan",
     price: "R99",
-    features: ["Coffin & Casket", "Hearse Transport", "Mortuary Services", "Basic Décor", "Documentation"],
+    features: [
+      "Coffin & Casket",
+      "Hearse Transport",
+      "Mortuary Services",
+      "Basic Décor",
+      "Documentation",
+    ],
     popular: false,
   },
   {
@@ -70,7 +76,7 @@ const BurialPlans = () => (
             initial= opacity: 0, y: 30 
             whileInView= opacity: 1, y: 0 
             viewport= once: true 
-            transition= delay: i * 0.15 
+            transition= delay: i * 0.15, duration: 0.6, ease: "easeOut" 
             className={`relative rounded-lg p-8 border ${
               plan.popular ? "border-gold bg-card shadow-gold" : "border-border bg-card"
             }`}
