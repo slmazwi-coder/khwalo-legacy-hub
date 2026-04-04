@@ -66,8 +66,9 @@ serve(async (req) => {
       amount_fee: data.amount_fee,
       amount_net: data.amount_net,
       item_name: data.item_name,
+      item_description: data.item_description,
       custom_str1: data.custom_str1, // plan
-      custom_str2: data.custom_str2, // identifier (policy/id)
+      custom_str2: data.custom_str2, // identifier
       token: data.token, // subscription token when applicable
     });
 
