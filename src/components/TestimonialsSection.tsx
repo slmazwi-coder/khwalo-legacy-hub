@@ -20,12 +20,12 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => (
-  <section id="testimonials" className="py-24 bg-gradient-dark">
+  <div className="py-16">
     <div className="container mx-auto px-4">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        initial= opacity: 0, y: 20 
+        whileInView= opacity: 1, y: 0 
+        viewport= once: true 
         className="text-center mb-16"
       >
         <p className="text-gold tracking-[0.2em] uppercase text-sm mb-3">Client Stories</p>
@@ -37,10 +37,10 @@ const TestimonialsSection = () => (
         {testimonials.map((t, i) => (
           <motion.div
             key={t.name}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.15 }}
+            initial= opacity: 0, y: 30 
+            whileInView= opacity: 1, y: 0 
+            viewport= once: true 
+            transition= delay: i * 0.15 
             className="bg-card border border-border rounded-lg overflow-hidden"
           >
             {t.img ? (
@@ -60,7 +60,7 @@ const TestimonialsSection = () => (
         ))}
       </div>
     </div>
-  </section>
+  </div>
 );
 
 export default TestimonialsSection;
