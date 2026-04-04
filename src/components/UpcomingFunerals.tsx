@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
-import memorialImg from "@/assets/memorial.jpg";
-import funeralSetup from "@/assets/funeral-setup.jpg";
+
+// Uploaded weekly funeral images
+import f1 from "@/assets/funerals/weekly/FB_IMG_1775288767613.jpg";
+import f2 from "@/assets/funerals/weekly/FB_IMG_1775288777237.jpg";
 
 const funerals = [
   {
@@ -9,14 +11,14 @@ const funerals = [
     dates: "10 March 1979 – 22 March 2026",
     ceremony: "Thursday, 02 April 2026",
     venue: "eMphetshwa Location, Bizana",
-    img: memorialImg,
+    img: f1,
   },
   {
     name: "Nolitha Fundiswa Sylvia Madikizela",
     dates: "23/08/1963 – 02/03/2026",
     ceremony: "Saturday, 13 March 2026",
     venue: "Details at nearest branch",
-    img: funeralSetup,
+    img: f2,
   },
 ];
 
