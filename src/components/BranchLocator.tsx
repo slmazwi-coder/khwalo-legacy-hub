@@ -35,6 +35,12 @@ const branches = [
   },
 ];
 
+const fadeUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+} as const;
+
 const BranchLocator = () => {
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -50,12 +56,7 @@ const BranchLocator = () => {
   return (
     <section id="contacts" className="py-24 bg-gradient-dark">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial= opacity: 0, y: 20 
-          whileInView= opacity: 1, y: 0 
-          viewport= once: true 
-          className="text-center mb-16"
-        >
+        <motion.div {...fadeUp} className="text-center mb-16">
           <p className="text-gold tracking-[0.2em] uppercase text-sm mb-3">Get in touch</p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">Contacts</h2>
         </motion.div>
