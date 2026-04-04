@@ -24,6 +24,19 @@ import img24 from "@/assets/hero/images (24).jpeg";
 import img6 from "@/assets/hero/images (6).jpeg";
 import img8 from "@/assets/hero/images (8).jpeg";
 
+const heroImageMotion = {
+  initial: { opacity: 0, scale: 1.02 },
+  animate: { opacity: 1, scale: 1 },
+  exit: { opacity: 0, scale: 1.01 },
+  transition: { duration: 0.8, ease: "easeOut" },
+} as const;
+
+const heroTextMotion = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: "easeOut" },
+} as const;
+
 const HeroSection = () => {
   const images = useMemo(
     () => [
@@ -71,10 +84,10 @@ const HeroSection = () => {
             src={images[idx]}
             alt="Khwalo Group"
             className="w-full h-full object-cover"
-            initial= opacity: 0, scale: 1.02 
-            animate= opacity: 1, scale: 1 
-            exit= opacity: 0, scale: 1.01 
-            transition= duration: 0.8, ease: "easeOut" 
+            initial={heroImageMotion.initial}
+            animate={heroImageMotion.animate}
+            exit={heroImageMotion.exit}
+            transition={heroImageMotion.transition}
           />
         </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
@@ -82,9 +95,9 @@ const HeroSection = () => {
 
       <div className="relative z-10 container mx-auto px-4 text-center pt-20">
         <motion.div
-          initial= opacity: 0, y: 40 
-          animate= opacity: 1, y: 0 
-          transition= duration: 0.8, ease: "easeOut" 
+          initial={heroTextMotion.initial}
+          animate={heroTextMotion.animate}
+          transition={heroTextMotion.transition}
         >
           <p className="text-gold tracking-[0.3em] uppercase text-sm mb-4 font-body font-light">
             Dignity · Professionalism · Humility
