@@ -21,6 +21,14 @@ const fadeUpCard = {
   viewport: { once: true },
 } as const;
 
+const fadeUpItem = (i: number) =>
+  ({
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
+  }) as const;
+
 const CEOSection = () => (
   <section id="team" className="py-24 bg-background">
     <div className="container mx-auto px-4">
@@ -55,12 +63,7 @@ const CEOSection = () => (
         <h3 className="font-display text-2xl font-bold text-foreground text-center mb-10">Branch Team</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-4xl mx-auto">
           {consultants.map((c, i) => (
-            <motion.div
-              key={c.branch}
-              {...fadeUp}
-              transition= delay: i * 0.1, duration: 0.6, ease: "easeOut" 
-              className="text-center"
-            >
+            <motion.div key={c.branch} {...fadeUpItem(i)} className="text-center">
               <div className="w-24 h-24 mx-auto rounded-full bg-muted border-2 border-gold/30 flex items-center justify-center mb-3">
                 <span className="text-gold font-display text-2xl">{c.branch[0]}</span>
               </div>
