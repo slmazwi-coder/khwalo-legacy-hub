@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/khwalo-logo.jpg";
 
 const Footer = () => (
