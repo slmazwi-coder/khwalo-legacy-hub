@@ -1,19 +1,23 @@
 import { motion } from "framer-motion";
-import testimonial1 from "@/assets/testimonial-1.jpg";
+
+// Uploaded testimonials (replace/rename freely, just update these imports if filenames change)
+import t1 from "@/assets/testimonials/FB_IMG_1775288767613.jpg";
+import t2 from "@/assets/testimonials/FB_IMG_1775288777237.jpg";
+import t3 from "@/assets/testimonials/FB_IMG_1775288782772.jpg";
 
 const testimonials = [
   {
-    img: testimonial1,
+    img: t1,
     name: "Tayo Family",
     text: "Thank you so much for your good service on laying our father to rest. May the good Lord bless you.",
   },
   {
-    img: null,
+    img: t2,
     name: "Mhlaba Family",
     text: "Khwalo Group gave our mother a dignified farewell. The service was impeccable from start to finish.",
   },
   {
-    img: null,
+    img: t3,
     name: "Skenjana Family",
     text: "Professional, compassionate and always available. We cannot thank Khwalo enough for their outstanding service.",
   },
@@ -49,13 +53,7 @@ const TestimonialsSection = () => (
             {...fadeUpItem(i)}
             className="bg-card border border-border rounded-lg overflow-hidden"
           >
-            {t.img ? (
-              <img src={t.img} alt={t.name} loading="lazy" className="w-full aspect-square object-cover" />
-            ) : (
-              <div className="w-full aspect-square bg-muted flex items-center justify-center">
-                <span className="text-6xl text-gold font-display">"</span>
-              </div>
-            )}
+            <img src={t.img} alt={t.name} loading="lazy" className="w-full aspect-square object-cover" />
             <div className="p-6">
               <p className="text-muted-foreground text-sm italic mb-4">"{t.text}"</p>
               <div className="border-t border-border pt-4">
