@@ -46,9 +46,9 @@ const BurialPlans = () => (
   <section id="plans" className="py-24 bg-gradient-dark">
     <div className="container mx-auto px-4">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        initial= opacity: 0, y: 20 
+        whileInView= opacity: 1, y: 0 
+        viewport= once: true 
         className="text-center mb-16"
       >
         <p className="text-gold tracking-[0.2em] uppercase text-sm mb-3">Coverage Options</p>
@@ -56,20 +56,23 @@ const BurialPlans = () => (
         <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-sm">
           Affordable monthly payments to secure dignified funeral services for your family.
         </p>
+
+        <p className="text-muted-foreground mt-6 text-sm">
+          Having trouble setting up a debit order?{" "}
+          <a href="/pay" className="text-gold hover:underline">Pay monthly premium here</a>.
+        </p>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        {plans.map((plan, i) => (
+        {plans.map((plan) => (
           <motion.div
             key={plan.name}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.15 }}
+            initial= opacity: 0, y: 30 
+            whileInView= opacity: 1, y: 0 
+            viewport= once: true 
+            transition= delay: i * 0.15 
             className={`relative rounded-lg p-8 border ${
-              plan.popular
-                ? "border-gold bg-card shadow-gold"
-                : "border-border bg-card"
+              plan.popular ? "border-gold bg-card shadow-gold" : "border-border bg-card"
             }`}
           >
             {plan.popular && (
