@@ -17,12 +17,12 @@ const Index = () => (
     <Navbar />
     <HeroSection />
     <ServicesSection />
-    <FleetSection />
     <BurialPlans />
-    <ApplicationForm />
     <TestimonialsSection />
-    <CEOSection />
+    <ApplicationForm />
     <BranchLocator />
+    <FleetSection />
+    <CEOSection />
     <UpcomingFunerals />
     <Footer />
     <WhatsAppButton />
