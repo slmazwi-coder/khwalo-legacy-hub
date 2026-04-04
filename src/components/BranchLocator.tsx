@@ -4,34 +4,40 @@ import { MapPin, Phone, Clock } from "lucide-react";
 
 const branches = [
   {
-    name: "East London (Head Office)",
-    address: "14 Greenwood Road, East London, 5200",
-    phone: "076 227 1640",
+    name: "East London",
+    address: "14A Greenwood Street, Berea, East London",
+    phone: "047 050 0383",
     coords: { lat: -33.0153, lng: 27.9116 },
   },
   {
-    name: "Mthatha",
-    address: "Mthatha, Eastern Cape",
-    phone: "073 918 6029",
-    coords: { lat: -31.5889, lng: 28.7844 },
+    name: "Lusikisiki (Head Office)",
+    address: "Jacaranda Street, Aroma Complex, Lusikisiki",
+    phone: "076 227 1640",
+    coords: { lat: -31.3661, lng: 29.5731 },
   },
   {
-    name: "Queenstown",
-    address: "Queenstown, Eastern Cape",
-    phone: "083 764 7122",
-    coords: { lat: -31.8975, lng: 26.8753 },
+    name: "Flagstaff",
+    address: "Vatsha Building, AutoZone Complex, Office 25, Flagstaff",
+    phone: "076 227 1640",
+    coords: { lat: -31.0829, lng: 29.4952 },
+  },
+  {
+    name: "Bizana",
+    address: "Bam Building, Office 29, 22 Main Street, Bizana",
+    phone: "076 227 1640",
+    coords: { lat: -30.8561, lng: 29.8576 },
   },
   {
     name: "Ngcobo",
-    address: "Ngcobo, Eastern Cape",
+    address: "Warner Street, Office 152, Ngcobo",
     phone: "083 873 0222",
     coords: { lat: -31.6806, lng: 28.0003 },
   },
   {
-    name: "Lusikisiki",
-    address: "Lusikisiki, Eastern Cape",
+    name: "Durban",
+    address: "417 Anton Lembede Street (Smith St), Sangro House, Office 910, Durban CBD",
     phone: "076 227 1640",
-    coords: { lat: -31.3661, lng: 29.5731 },
+    coords: { lat: -29.8587, lng: 31.0218 },
   },
 ];
 
