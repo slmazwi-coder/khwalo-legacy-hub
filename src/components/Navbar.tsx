@@ -5,13 +5,10 @@ import logo from "@/assets/khwalo-logo.jpg";
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
-  { label: "Fleet", href: "#fleet" },
   { label: "Burial Plans", href: "#plans" },
-  { label: "Apply Online", href: "#apply" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Leadership", href: "#ceo" },
-  { label: "Branches", href: "#branches" },
-  { label: "Funerals", href: "#funerals" },
+  { label: "Updates", href: "#updates" },
+  { label: "Our Team", href: "#team" },
+  { label: "Contacts", href: "#contacts" },
 ];
 
 const Navbar = () => {
