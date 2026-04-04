@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Hero images folder: src/assets/hero/
-// Using the images you uploaded (FB_IMG..., images (...).jpeg) plus placeholders.
 import hero01 from "@/assets/hero/hero-01.jpg";
 import hero02 from "@/assets/hero/hero-02.jpg";
 import hero03 from "@/assets/hero/hero-03.jpg";
@@ -25,9 +24,9 @@ import img6 from "@/assets/hero/images (6).jpeg";
 import img8 from "@/assets/hero/images (8).jpeg";
 
 const heroImageMotion = {
-  initial: { opacity: 0, scale: 1.02 },
-  animate: { opacity: 1, scale: 1 },
-  exit: { opacity: 0, scale: 1.01 },
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
   transition: { duration: 0.8, ease: "easeOut" },
 } as const;
 
@@ -40,12 +39,9 @@ const heroTextMotion = {
 const HeroSection = () => {
   const images = useMemo(
     () => [
-      // Your dedicated hero slots
       hero01,
       hero02,
       hero03,
-
-      // Uploaded images
       fb1,
       fb2,
       fb3,
@@ -55,7 +51,6 @@ const HeroSection = () => {
       fb7,
       fb8,
       fb9,
-
       img14,
       img16,
       img19,
@@ -77,13 +72,13 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-black">
         <AnimatePresence mode="wait">
           <motion.img
             key={idx}
             src={images[idx]}
             alt="Khwalo Group"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
             initial={heroImageMotion.initial}
             animate={heroImageMotion.animate}
             exit={heroImageMotion.exit}
