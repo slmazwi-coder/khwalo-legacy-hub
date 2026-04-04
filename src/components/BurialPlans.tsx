@@ -54,6 +54,14 @@ const fadeUp = {
   viewport: { once: true },
 } as const;
 
+const fadeUpItem = (i: number) =>
+  ({
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" },
+  }) as const;
+
 const BurialPlans = () => (
   <section id="plans" className="py-24 bg-gradient-dark">
     <div className="container mx-auto px-4">
@@ -74,10 +82,7 @@ const BurialPlans = () => (
         {plans.map((plan, i) => (
           <motion.div
             key={plan.name}
-            initial= opacity: 0, y: 30 
-            whileInView= opacity: 1, y: 0 
-            viewport= once: true 
-            transition= delay: i * 0.15, duration: 0.6, ease: "easeOut" 
+            {...fadeUpItem(i)}
             className={`relative rounded-lg p-8 border ${
               plan.popular ? "border-gold bg-card shadow-gold" : "border-border bg-card"
             }`}
