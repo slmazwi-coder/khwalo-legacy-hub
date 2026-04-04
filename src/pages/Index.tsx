@@ -10,6 +10,7 @@ import BranchLocator from "@/components/BranchLocator";
 import UpcomingFunerals from "@/components/UpcomingFunerals";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ChatBot from "@/components/ChatBot";
 
 const Index = () => (
   <div className="min-h-screen bg-background">
