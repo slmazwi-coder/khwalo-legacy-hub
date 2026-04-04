@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Clock } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 import memorialImg from "@/assets/memorial.jpg";
 import funeralSetup from "@/assets/funeral-setup.jpg";
 
@@ -21,12 +21,12 @@ const funerals = [
 ];
 
 const UpcomingFunerals = () => (
-  <section id="funerals" className="py-24 bg-background">
+  <div className="py-16">
     <div className="container mx-auto px-4">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        initial= opacity: 0, y: 20 
+        whileInView= opacity: 1, y: 0 
+        viewport= once: true 
         className="text-center mb-16"
       >
         <p className="text-gold tracking-[0.2em] uppercase text-sm mb-3">This Week</p>
@@ -37,10 +37,10 @@ const UpcomingFunerals = () => (
         {funerals.map((f, i) => (
           <motion.div
             key={f.name}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.15 }}
+            initial= opacity: 0, y: 30 
+            whileInView= opacity: 1, y: 0 
+            viewport= once: true 
+            transition= delay: i * 0.15 
             className="bg-card border border-border rounded-lg overflow-hidden"
           >
             <div className="aspect-video overflow-hidden">
@@ -64,7 +64,7 @@ const UpcomingFunerals = () => (
         ))}
       </div>
     </div>
-  </section>
+  </div>
 );
 
 export default UpcomingFunerals;
