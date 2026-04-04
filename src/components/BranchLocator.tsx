@@ -48,16 +48,16 @@ const BranchLocator = () => {
   const active = branches[activeIdx];
 
   return (
-    <section id="branches" className="py-24 bg-gradient-dark">
+    <section id="contacts" className="py-24 bg-gradient-dark">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial= opacity: 0, y: 20 
+          whileInView= opacity: 1, y: 0 
+          viewport= once: true 
           className="text-center mb-16"
         >
-          <p className="text-gold tracking-[0.2em] uppercase text-sm mb-3">Find Us</p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">Branch Locator</h2>
+          <p className="text-gold tracking-[0.2em] uppercase text-sm mb-3">Get in touch</p>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">Contacts</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -73,7 +73,11 @@ const BranchLocator = () => {
                 }`}
               >
                 <div className="flex items-start gap-3">
-                  <MapPin className={`w-5 h-5 mt-0.5 flex-shrink-0 ${i === activeIdx ? "text-gold" : "text-muted-foreground"}`} />
+                  <MapPin
+                    className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                      i === activeIdx ? "text-gold" : "text-muted-foreground"
+                    }`}
+                  />
                   <div>
                     <h4 className="font-display font-semibold text-foreground">{b.name}</h4>
                     <p className="text-muted-foreground text-sm">{b.address}</p>
