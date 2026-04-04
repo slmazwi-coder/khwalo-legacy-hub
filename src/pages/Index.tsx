@@ -4,10 +4,9 @@ import ServicesSection from "@/components/ServicesSection";
 import FleetSection from "@/components/FleetSection";
 import BurialPlans from "@/components/BurialPlans";
 import ApplicationForm from "@/components/ApplicationForm";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import CEOSection from "@/components/CEOSection";
 import BranchLocator from "@/components/BranchLocator";
-import UpcomingFunerals from "@/components/UpcomingFunerals";
+import UpdatesSection from "@/components/UpdatesSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ChatBot from "@/components/ChatBot";
@@ -16,14 +15,24 @@ const Index = () => (
   <div className="min-h-screen bg-background">
     <Navbar />
     <HeroSection />
+
+    {/* Services (includes Fleet below on the page) */}
     <ServicesSection />
-    <BurialPlans />
-    <TestimonialsSection />
-    <ApplicationForm />
-    <BranchLocator />
     <FleetSection />
+
+    {/* Plans (apply form is part of plans journey) */}
+    <BurialPlans />
+    <ApplicationForm />
+
+    {/* Updates = Testimonials + Upcoming Funerals */}
+    <UpdatesSection />
+
+    {/* Our Team */}
     <CEOSection />
-    <UpcomingFunerals />
+
+    {/* Contacts */}
+    <BranchLocator />
+
     <Footer />
     <WhatsAppButton />
     <ChatBot />
