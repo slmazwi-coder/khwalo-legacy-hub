@@ -19,15 +19,24 @@ const testimonials = [
   },
 ];
 
+const fadeUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+} as const;
+
+const fadeUpItem = (i: number) =>
+  ({
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" },
+  }) as const;
+
 const TestimonialsSection = () => (
   <div className="py-16">
     <div className="container mx-auto px-4">
-      <motion.div
-        initial= opacity: 0, y: 20 
-        whileInView= opacity: 1, y: 0 
-        viewport= once: true 
-        className="text-center mb-16"
-      >
+      <motion.div {...fadeUp} className="text-center mb-16">
         <p className="text-gold tracking-[0.2em] uppercase text-sm mb-3">Client Stories</p>
         <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">Testimonials</h2>
         <p className="text-muted-foreground mt-4 text-sm">98% of clients recommend our services</p>
@@ -37,10 +46,7 @@ const TestimonialsSection = () => (
         {testimonials.map((t, i) => (
           <motion.div
             key={t.name}
-            initial= opacity: 0, y: 30 
-            whileInView= opacity: 1, y: 0 
-            viewport= once: true 
-            transition= delay: i * 0.15 
+            {...fadeUpItem(i)}
             className="bg-card border border-border rounded-lg overflow-hidden"
           >
             {t.img ? (
