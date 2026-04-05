@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Hero images folder: src/assets/hero/
-// Only import files that exist in the repo to avoid build failures.
 import hero01 from "@/assets/hero/hero-01.jpg";
 import hero02 from "@/assets/hero/hero-02.jpg";
 import hero03 from "@/assets/hero/hero-03.jpg";
@@ -59,7 +57,10 @@ const HeroSection = () => {
             transition={heroImageMotion.transition}
           />
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+
+        {/* Stronger overlay for readability */}
+        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background" />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 text-center pt-20">
@@ -71,14 +72,14 @@ const HeroSection = () => {
           <p className="text-gold tracking-[0.3em] uppercase text-sm mb-4 font-body font-light">
             Dignity · Professionalism · Humility
           </p>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-foreground">
             <span className="text-gradient-gold">Khwalo</span>{" "}
             <span className="text-foreground">Group</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 font-body font-light">
+          <p className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto mb-4 font-body font-light">
             Funeral Services & Financial Advice
           </p>
-          <p className="text-muted-foreground max-w-xl mx-auto mb-10 font-body text-sm">
+          <p className="text-foreground/80 max-w-xl mx-auto mb-10 font-body text-sm">
             Our pledge to stand with you in the time of need is certain. Serving the Eastern Cape with prestige and care.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
