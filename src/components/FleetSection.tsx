@@ -20,6 +20,12 @@ const sliderMotion = {
   transition: { duration: 0.35, ease: "easeOut" },
 } as const;
 
+const fadeUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+} as const;
+
 const FleetSection = () => {
   const [active, setActive] = useState("vehicles");
 
@@ -99,12 +105,7 @@ const FleetSection = () => {
   return (
     <section id="fleet" className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial= opacity: 0, y: 20 
-          whileInView= opacity: 1, y: 0 
-          viewport= once: true 
-          className="text-center mb-12"
-        >
+        <motion.div {...fadeUp} className="text-center mb-12">
           <p className="text-gold tracking-[0.2em] uppercase text-sm mb-3">Our Capabilities</p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">Fleet & Showcase</h2>
         </motion.div>
