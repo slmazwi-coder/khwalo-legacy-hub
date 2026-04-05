@@ -84,16 +84,16 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#plans"
+              href="/pay"
               className="bg-gradient-maroon px-8 py-4 rounded-md text-primary-foreground font-medium hover:opacity-90 transition shadow-maroon"
             >
-              View Burial Plans
+              Pay Monthly Premium
             </a>
             <a
-              href="#apply"
+              href="#plans"
               className="border border-gold px-8 py-4 rounded-md text-gold font-medium hover:bg-gold/10 transition"
             >
-              Apply Online
+              View Burial Plans
             </a>
           </div>
 

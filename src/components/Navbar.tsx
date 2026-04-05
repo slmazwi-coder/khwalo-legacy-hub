@@ -33,7 +33,10 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-4">
+          <a href="/pay" className="bg-gradient-maroon px-5 py-2.5 rounded-md text-primary-foreground text-sm font-semibold shadow-maroon hover:opacity-90 transition">
+            Pay Now
+          </a>
           <a href="tel:0762271640" className="flex items-center gap-2 text-sm text-gold">
             <Phone className="w-4 h-4" />
             076 227 1640
@@ -51,6 +54,13 @@ const Navbar = () => {
 
       {open && (
         <div className="lg:hidden bg-white border-b border-border pb-4">
+          <a
+            href="/pay"
+            onClick={() => setOpen(false)}
+            className="block mx-6 mt-4 mb-2 text-center bg-gradient-maroon px-6 py-3 rounded-md text-primary-foreground text-sm font-semibold shadow-maroon"
+          >
+            Pay Now
+          </a>
           {navLinks.map((link) => (
             <a
               key={link.href}

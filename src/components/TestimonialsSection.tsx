@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 
-// Uploaded testimonials (replace/rename freely, just update these imports if filenames change)
-import t1 from "@/assets/testimonials/FB_IMG_1775288767613.jpg";
-import t2 from "@/assets/testimonials/FB_IMG_1775288777237.jpg";
-import t3 from "@/assets/testimonials/FB_IMG_1775288782772.jpg";
+// Uploaded testimonials
+import t1 from "@/assets/testimonials/FB_IMG_1775288759156.jpg";
+import t2 from "@/assets/testimonials/FB_IMG_1775288815421.jpg";
+import t3 from "@/assets/testimonials/FB_IMG_1775288823471.jpg";
 
 const testimonials = [
   {
