@@ -2,26 +2,19 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Hero images folder: src/assets/hero/
+// Only import files that exist in the repo to avoid build failures.
 import hero01 from "@/assets/hero/hero-01.jpg";
 import hero02 from "@/assets/hero/hero-02.jpg";
 import hero03 from "@/assets/hero/hero-03.jpg";
 
 import fb1 from "@/assets/hero/FB_IMG_1775288989078.jpg";
 import fb2 from "@/assets/hero/FB_IMG_1775289003500.jpg";
-import fb3 from "@/assets/hero/FB_IMG_1775289171785.jpg";
 import fb4 from "@/assets/hero/FB_IMG_1775307378065.jpg";
-import fb5 from "@/assets/hero/FB_IMG_1775307444395.jpg";
-import fb6 from "@/assets/hero/FB_IMG_1775307619504.jpg";
-import fb7 from "@/assets/hero/FB_IMG_1775307628842.jpg";
-import fb8 from "@/assets/hero/FB_IMG_1775307674745.jpg";
 import fb9 from "@/assets/hero/FB_IMG_1775307732026.jpg";
 
 import img14 from "@/assets/hero/images (14).jpeg";
 import img16 from "@/assets/hero/images (16).jpeg";
 import img19 from "@/assets/hero/images (19).jpeg";
-import img24 from "@/assets/hero/images (24).jpeg";
-import img6 from "@/assets/hero/images (6).jpeg";
-import img8 from "@/assets/hero/images (8).jpeg";
 
 const heroImageMotion = {
   initial: { opacity: 0 },
@@ -38,26 +31,7 @@ const heroTextMotion = {
 
 const HeroSection = () => {
   const images = useMemo(
-    () => [
-      hero01,
-      hero02,
-      hero03,
-      fb1,
-      fb2,
-      fb3,
-      fb4,
-      fb5,
-      fb6,
-      fb7,
-      fb8,
-      fb9,
-      img14,
-      img16,
-      img19,
-      img24,
-      img6,
-      img8,
-    ],
+    () => [hero01, hero02, hero03, fb1, fb2, fb4, fb9, img14, img16, img19],
     []
   );
 
