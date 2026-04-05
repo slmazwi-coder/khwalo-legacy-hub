@@ -1,6 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 
+const fadeUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+} as const;
+
+const sliderMotion = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.35, ease: "easeOut" },
+} as const;
+
 // Upcoming funerals posters (images only). Add posters to:
 // src/assets/funerals/weekly/
 const UpcomingFunerals = () => {
@@ -35,12 +47,7 @@ const UpcomingFunerals = () => {
   return (
     <div className="py-16">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial= opacity: 0, y: 20 
-          whileInView= opacity: 1, y: 0 
-          viewport= once: true 
-          className="text-center mb-12"
-        >
+        <motion.div {...fadeUp} className="text-center mb-12">
           <p className="text-gold tracking-[0.2em] uppercase text-sm mb-3">This Week</p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">Upcoming Funerals</h2>
           <p className="text-muted-foreground mt-3 text-sm">Latest funeral posters (tap arrows to browse)</p>
@@ -55,9 +62,9 @@ const UpcomingFunerals = () => {
                 alt={`Upcoming funeral poster ${idx + 1}`}
                 loading="lazy"
                 className="w-full h-full object-contain"
-                initial= opacity: 0 
-                animate= opacity: 1 
-                transition= duration: 0.35, ease: "easeOut" 
+                initial={sliderMotion.initial}
+                animate={sliderMotion.animate}
+                transition={sliderMotion.transition}
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-sm text-white/70">
