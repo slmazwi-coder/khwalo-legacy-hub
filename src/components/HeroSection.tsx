@@ -1,118 +1,58 @@
-import { useEffect, useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { MessageCircle, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useLang } from "@/i18n/LanguageContext";
+import { contact, wa, defaultWhatsapp } from "@/data/contact";
 
-import hero01 from "@/assets/hero/hero-01.jpg";
-import hero02 from "@/assets/hero/hero-02.jpg";
-import hero03 from "@/assets/hero/hero-03.jpg";
-
-import fb1 from "@/assets/hero/FB_IMG_1775288989078.jpg";
-import fb2 from "@/assets/hero/FB_IMG_1775289003500.jpg";
-import fb4 from "@/assets/hero/FB_IMG_1775307378065.jpg";
-import fb9 from "@/assets/hero/FB_IMG_1775307732026.jpg";
-
-import img14 from "@/assets/hero/images (14).jpeg";
-import img16 from "@/assets/hero/images (16).jpeg";
-import img19 from "@/assets/hero/images (19).jpeg";
-
-const heroImageMotion = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-  transition: { duration: 0.8, ease: "easeOut" },
-} as const;
-
-const heroTextMotion = {
-  initial: { opacity: 0, y: 40 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: "easeOut" },
-} as const;
-
-const HeroSection = () => {
-  const images = useMemo(
-    () => [hero01, hero02, hero03, fb1, fb2, fb4, fb9, img14, img16, img19],
-    []
-  );
-
-  const [idx, setIdx] = useState(0);
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      setIdx((prev) => (prev + 1) % images.length);
-    }, 6000);
-    return () => clearInterval(t);
-  }, [images.length]);
+export function HeroSection() {
+  const { t } = useLang();
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-black">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={idx}
-            src={images[idx]}
-            alt="Khwalo Group"
-            className="w-full h-full object-contain"
-            initial={heroImageMotion.initial}
-            animate={heroImageMotion.animate}
-            exit={heroImageMotion.exit}
-            transition={heroImageMotion.transition}
-          />
-        </AnimatePresence>
-
-        {/* Stronger overlay for readability */}
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background" />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 text-center pt-20">
-        <motion.div
-          initial={heroTextMotion.initial}
-          animate={heroTextMotion.animate}
-          transition={heroTextMotion.transition}
-        >
-          <p className="text-gold tracking-[0.3em] uppercase text-sm mb-4 font-body font-light">
-            Dignity · Professionalism · Humility
-          </p>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-foreground">
-            <span className="text-gradient-gold">Khwalo</span>{" "}
-            <span className="text-foreground">Group</span>
+    <section id="top" className="hero-gradient hero-glow relative overflow-hidden py-14 sm:py-20">
+      <div className="relative z-10 mx-auto grid w-[min(1180px,calc(100%-24px))] items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+        <div>
+          <span className="text-xs font-extrabold uppercase tracking-[0.15em] text-royal">{t.hero.eyebrow}</span>
+          <h1 className="mt-3 text-4xl font-bold leading-[1.05] text-primary sm:text-5xl lg:text-[3.9rem]">
+            {t.hero.title}
           </h1>
-          <p className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto mb-4 font-body font-light">
-            Funeral Services & Financial Advice
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            {t.hero.sub}
           </p>
-          <p className="text-foreground/80 max-w-xl mx-auto mb-10 font-body text-sm">
-            Our pledge to stand with you in the time of need is certain. Serving the Eastern Cape with prestige and care.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/pay"
-              className="bg-gradient-maroon px-8 py-4 rounded-md text-primary-foreground font-medium hover:opacity-90 transition shadow-maroon"
-            >
-              Pay Monthly Premium
-            </a>
-            <a
-              href="#plans"
-              className="border border-gold px-8 py-4 rounded-md text-gold font-medium hover:bg-gold/10 transition"
-            >
-              View Burial Plans
-            </a>
+
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Button asChild size="lg" className="w-full rounded-full sm:w-auto">
+              <a href={`tel:${contact.phones[0].tel}`}>
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                {t.hero.call}
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="secondary" className="w-full rounded-full sm:w-auto">
+              <a href={wa(defaultWhatsapp)} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                {t.hero.whatsapp}
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="w-full rounded-full sm:w-auto">
+              <a href="#catalogue">{t.hero.view}</a>
+            </Button>
           </div>
 
-          <div className="flex justify-center gap-2 mt-8 flex-wrap">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setIdx(i)}
-                aria-label={`Hero image ${i + 1}`}
-                className={`h-2.5 w-2.5 rounded-full transition ${
-                  i === idx ? "bg-gold" : "bg-white/40 hover:bg-white/60"
-                }`}
-              />
-            ))}
-          </div>
-        </motion.div>
+          <blockquote className="mt-7 border-l-[3px] border-sky pl-4 text-sm italic text-muted-foreground sm:text-base">
+            {t.hero.scripture}
+          </blockquote>
+        </div>
+
+        <div className="overflow-hidden rounded-[28px] border-8 border-card shadow-2xl shadow-primary/15">
+          <img
+            src="/business-front.jpg"
+            alt="Luloyiso Funeral Services premises in Matatiele"
+            className="block h-[280px] w-full object-cover sm:h-[380px] lg:h-[430px]"
+            width={1200}
+            height={800}
+            loading="eager"
+            decoding="async"
+          />
+        </div>
       </div>
     </section>
   );
-};
-
-export default HeroSection;
+}

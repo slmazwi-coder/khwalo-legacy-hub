@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,53 +6,59 @@
 
 @layer base {
   :root {
-    /* Light / cream theme */
-    --background: 40 35% 96%;
-    --foreground: 220 20% 18%;
+    /* Luloyiso brand — calm, dignified, compassionate */
+    --background: 231 44% 98%;
+    --foreground: 231 20% 19%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 18%;
+    --card-foreground: 231 20% 19%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 18%;
+    --popover-foreground: 231 20% 19%;
 
-    /* Brand */
-    --primary: 0 55% 28%;
+    /* Deep navy / indigo #2E2A72 */
+    --primary: 243 46% 31%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 55% 50%;
-    --secondary-foreground: 220 20% 18%;
+    /* Soft lavender surface */
+    --secondary: 231 44% 95%;
+    --secondary-foreground: 243 46% 31%;
 
-    --muted: 40 20% 92%;
-    --muted-foreground: 220 10% 42%;
+    --muted: 231 30% 95%;
+    --muted-foreground: 220 12% 45%;
 
-    --accent: 40 55% 50%;
-    --accent-foreground: 220 20% 18%;
+    /* Sky blue #5BB8E0 */
+    --accent: 198 68% 62%;
+    --accent-foreground: 210 60% 15%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 18% 84%;
-    --input: 40 18% 84%;
-    --ring: 0 55% 28%;
+    --border: 231 20% 90%;
+    --input: 231 20% 90%;
+    --ring: 243 46% 31%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
-    /* Sidebar (unused in most pages but kept consistent) */
-    --sidebar-background: 40 35% 96%;
-    --sidebar-foreground: 220 20% 18%;
-    --sidebar-primary: 0 55% 28%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 40 20% 92%;
-    --sidebar-accent-foreground: 220 20% 18%;
-    --sidebar-border: 40 18% 84%;
-    --sidebar-ring: 0 55% 28%;
+    /* Royal blue #2B4FA3 and sky blue #5BB8E0 as direct tokens */
+    --royal: 222 58% 40%;
+    --sky: 198 68% 62%;
 
+    /* Kept for compatibility with the shared shadcn theme tokens */
     --gold: 40 55% 50%;
     --gold-light: 40 65% 60%;
-    --maroon: 0 55% 28%;
-    --maroon-light: 0 50% 36%;
-    --cream: 40 35% 96%;
+    --maroon: 243 46% 31%;
+    --maroon-light: 243 46% 38%;
+    --cream: 231 44% 98%;
+
+    --sidebar-background: 231 44% 98%;
+    --sidebar-foreground: 231 20% 19%;
+    --sidebar-primary: 243 46% 31%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 231 44% 95%;
+    --sidebar-accent-foreground: 243 46% 31%;
+    --sidebar-border: 231 20% 90%;
+    --sidebar-ring: 243 46% 31%;
   }
 }
 
@@ -63,71 +69,76 @@
 
   body {
     @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3 {
     @apply font-display;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
   }
 }
 
 @layer utilities {
-  .text-gradient-gold {
-    background: linear-gradient(135deg, hsl(40 65% 60%), hsl(40 55% 50%), hsl(40 65% 60%));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* Accessible, high-contrast focus ring for keyboard users */
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 
-  .bg-gradient-maroon {
-    background: linear-gradient(135deg, hsl(0 55% 24%), hsl(0 55% 32%));
+  .hero-gradient {
+    background: linear-gradient(120deg, #f4f6ff 0%, #ffffff 52%, #edf9fd 100%);
   }
 
-  .bg-gradient-gold {
-    background: linear-gradient(135deg, hsl(40 55% 45%), hsl(40 65% 55%));
-  }
-
-  /* Light section gradient (replaces previous dark gradient utility) */
-  .bg-gradient-dark {
-    background: linear-gradient(180deg, hsl(40 35% 96%), hsl(40 28% 93%));
-  }
-
-  .shadow-gold {
-    box-shadow: 0 4px 20px -4px hsl(40 55% 50% / 0.25);
-  }
-
-  .shadow-maroon {
-    box-shadow: 0 4px 20px -4px hsl(0 55% 28% / 0.25);
-  }
-
-  .border-gold {
-    border-color: hsl(40 55% 50%);
-  }
-
-  .animate-fade-up {
-    animation: fadeUp 0.6s ease-out forwards;
-  }
-
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+  .hero-glow::after {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 9999px;
+    background: hsl(var(--sky) / 0.11);
+    right: -180px;
+    top: -170px;
+    pointer-events: none;
   }
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Fallback wordmark used only if /logo.png cannot be loaded */
+.logo-fallback {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1.05;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.logo-fallback-name {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: hsl(var(--primary));
 }
 
-html {
-  scroll-behavior: smooth;
+.logo-fallback-sub {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: hsl(var(--royal));
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-block {
+    display: block !important;
+  }
+
+  body {
+    background: #fff;
+  }
 }

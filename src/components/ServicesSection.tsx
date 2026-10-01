@@ -1,48 +1,60 @@
-import { motion } from "framer-motion";
-import { Building2, Camera, Tent, Car, Flower2, Plane, Users, FileText } from "lucide-react";
+import {
+  ArrowDownToLine,
+  Armchair,
+  Cross,
+  FileText,
+  HeartHandshake,
+  Mic2,
+  Tent,
+  Truck,
+  Video,
+  type LucideIcon,
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { SectionHeading } from "./SectionHeading";
+import { useLang } from "@/i18n/LanguageContext";
+import { serviceNames } from "@/data/translations";
 
-const services = [
-  { icon: Building2, title: "Mortuary Services", desc: "State-of-the-art mortuary facilities across all branches" },
-  { icon: Tent, title: "Tents & Marquees", desc: "Large-scale tent setups for funeral services of any size" },
-  { icon: Flower2, title: "Decorations", desc: "Elegant floral arrangements and venue décor" },
-  { icon: Camera, title: "Photography", desc: "Professional funeral photography and videography" },
-  { icon: Plane, title: "Aerial Photography", desc: "Drone photography capturing the full ceremony" },
-  { icon: Car, title: "Fleet & Transport", desc: "Luxury hearse fleet and body trailers" },
-  { icon: Users, title: "Financial Advice", desc: "Burial plan consultation and financial guidance" },
-  { icon: FileText, title: "Full Service Funerals", desc: "Complete end-to-end funeral management" },
+const ICONS: LucideIcon[] = [
+  HeartHandshake, // Coffins / Caskets
+  HeartHandshake, // Décor
+  Tent,
+  Armchair,
+  Cross,
+  Video,
+  Mic2,
+  Truck,
+  ArrowDownToLine,
+  FileText,
+  HeartHandshake, // And more
 ];
 
-const ServicesSection = () => (
-  <section id="services" className="py-24 bg-gradient-dark">
-    <div className="container mx-auto px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <p className="text-gold tracking-[0.2em] uppercase text-sm mb-3">What We Offer</p>
-        <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">Our Services</h2>
-      </motion.div>
+export function ServicesSection() {
+  const { t, lang } = useLang();
+  const names = serviceNames[lang];
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {services.map((s, i) => (
-          <motion.div
-            key={s.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="bg-card border border-border rounded-lg p-6 hover:border-gold/40 transition-all group"
-          >
-            <s.icon className="w-10 h-10 text-gold mb-4 group-hover:scale-110 transition-transform" />
-            <h3 className="font-display text-lg font-semibold text-foreground mb-2">{s.title}</h3>
-            <p className="text-muted-foreground text-sm">{s.desc}</p>
-          </motion.div>
-        ))}
+  return (
+    <section id="services" className="py-16 sm:py-24">
+      <div className="mx-auto w-[min(1180px,calc(100%-24px))]">
+        <SectionHeading eyebrow={t.services.eyebrow} title={t.services.title} sub={t.services.sub} />
+
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {names.map((name, index) => {
+            const Icon = ICONS[index] ?? HeartHandshake;
+            return (
+              <Card key={name} className="border-border/70 transition-shadow hover:shadow-lg">
+                <CardContent className="p-6">
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-primary">
+                    <Icon className="h-6 w-6" aria-hidden="true" />
+                  </div>
+                  <h3 className="mt-4 text-base font-bold text-primary">{name}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{t.services.blurb}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  </section>
-);
-
-export default ServicesSection;
+    </section>
+  );
+}
