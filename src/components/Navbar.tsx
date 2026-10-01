@@ -1,83 +1,86 @@
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
-import logo from "@/assets/khwalo-logo.jpg";
+import { Languages, Menu, Phone, X } from "lucide-react";
+import { Logo } from "./Logo";
+import { useLang } from "@/i18n/LanguageContext";
+import { contact } from "@/data/contact";
 
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "Burial Plans", href: "#plans" },
-  { label: "Updates", href: "#updates" },
-  { label: "Our Team", href: "#team" },
-  { label: "Contacts", href: "#contacts" },
-];
-
-const Navbar = () => {
+export function Navbar() {
+  const { t, lang, toggle } = useLang();
   const [open, setOpen] = useState(false);
 
+  const links = [
+    { label: t.nav.services, href: "#services" },
+    { label: t.nav.scheme, href: "#scheme" },
+    { label: t.nav.catalogue, href: "#catalogue" },
+    { label: t.nav.trust, href: "#trust" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4 flex items-center justify-between h-20">
-        <a href="#home" className="flex items-center gap-3">
-          <img src={logo} alt="Khwalo Group" className="h-14 w-auto" />
+    <header className="no-print sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
+      <div className="mx-auto flex h-[72px] w-[min(1180px,calc(100%-24px))] items-center justify-between gap-4">
+        <a href="#top" className="focus-ring shrink-0 rounded-md" aria-label={contact.name}>
+          <Logo className="h-11 w-auto object-contain sm:h-12" />
         </a>
 
-        <div className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) => (
+        <nav className="hidden items-center gap-5 lg:flex" aria-label="Primary">
+          {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-gray-700 hover:text-gold transition-colors"
+              className="focus-ring rounded text-sm font-semibold text-foreground/80 transition-colors hover:text-primary"
             >
               {link.label}
             </a>
           ))}
-        </div>
+        </nav>
 
-        <div className="hidden lg:flex items-center gap-4">
-          <a href="/pay" className="bg-gradient-maroon px-5 py-2.5 rounded-md text-primary-foreground text-sm font-semibold shadow-maroon hover:opacity-90 transition">
-            Pay Now
+        <div className="flex items-center gap-2">
+          <a
+            href={`tel:${contact.phones[0].tel}`}
+            className="focus-ring hidden items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 sm:inline-flex"
+          >
+            <Phone className="h-4 w-4" aria-hidden="true" />
+            {contact.phones[0].display}
           </a>
-          <a href="tel:0762271640" className="flex items-center gap-2 text-sm text-gold">
-            <Phone className="w-4 h-4" />
-            076 227 1640
-          </a>
+          <button
+            type="button"
+            onClick={toggle}
+            className="focus-ring inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-2 text-sm font-semibold text-primary transition-colors hover:bg-secondary"
+            aria-label={`Switch language to ${t.langToggle}`}
+          >
+            <Languages className="h-4 w-4" aria-hidden="true" />
+            <span className="hidden sm:inline">{lang === "en" ? "isiXhosa" : "English"}</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-primary lg:hidden"
+            aria-label={t.menu}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+          >
+            {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+          </button>
         </div>
-
-        <button
-          onClick={() => setOpen(!open)}
-          className="lg:hidden text-gray-900"
-          aria-label={open ? "Close menu" : "Open menu"}
-        >
-          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
       </div>
 
       {open && (
-        <div className="lg:hidden bg-white border-b border-border pb-4">
-          <a
-            href="/pay"
-            onClick={() => setOpen(false)}
-            className="block mx-6 mt-4 mb-2 text-center bg-gradient-maroon px-6 py-3 rounded-md text-primary-foreground text-sm font-semibold shadow-maroon"
-          >
-            Pay Now
-          </a>
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="block px-6 py-3 text-sm text-gray-700 hover:text-gold transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-          <a href="tel:0762271640" className="block px-6 py-3 text-sm text-gold">
-            📞 076 227 1640
-          </a>
-        </div>
+        <nav id="mobile-menu" className="border-t border-border bg-background lg:hidden" aria-label="Mobile">
+          <div className="mx-auto w-[min(1180px,calc(100%-24px))] py-2">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="focus-ring block rounded px-2 py-3 font-semibold text-primary"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </nav>
       )}
-    </nav>
+    </header>
   );
-};
-
-export default Navbar;
+}
