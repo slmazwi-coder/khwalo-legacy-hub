@@ -264,6 +264,10 @@ export function TombstoneCatalogue() {
                 ))}
               </div>
 
+              <span className="text-sm font-semibold text-muted-foreground">
+                {t.catalogue.slab}: +{formatZAR(SLAB_PRICE)}
+              </span>
+
               <div className="flex min-w-[240px] flex-1 items-center gap-3">
                 <label htmlFor="price-range" className="whitespace-nowrap text-sm font-semibold text-muted-foreground">
                   {formatZAR(minPrice)}

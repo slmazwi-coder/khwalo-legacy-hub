@@ -8,8 +8,7 @@ export type Tombstone = {
 };
 
 // Flat add-on, the same price across all designs.
-// TODO(client): source sheet reads R6,500 but has a handwritten "R7000" and P1's R6,500 is struck through — confirm.
-export const SLAB_PRICE = 6500;
+export const SLAB_PRICE = 7000;
 
 /** Full-set price above which a design is flagged "Premium" in the UI. */
 export const PREMIUM_THRESHOLD = 30000;
@@ -39,7 +38,6 @@ export const tombstones: Tombstone[] = [
   { code: "P22", size: "70x50", headBase: 6700, fullSet: 9300 },
   { code: "P23", size: "70x50", headBase: 6000, fullSet: 8600 },
   { code: "P24", size: "70x50", headBase: 6250, fullSet: 8850 },
-  { code: "P24B", size: "70x50", headBase: 6300, fullSet: 9440 }, // sheet has two rows labelled P24 — confirm which code this really is
   { code: "P25", size: "70x50", headBase: 6840, fullSet: 9440 },
   { code: "P26", size: "50x50", headBase: 6840, fullSet: 9440 },
   { code: "P27", size: "50x50", headBase: 6300, fullSet: 8900 },
@@ -59,11 +57,11 @@ export const tombstones: Tombstone[] = [
   { code: "P41", size: "70x60", headBase: 5810, fullSet: 8410 },
   { code: "P42", size: "Double base", headBase: 4800, fullSet: 7500 },
   { code: "P43", size: "70x40x2", headBase: 7150, fullSet: 9750 },
-  { code: "P44", size: "105x30", headBase: 10040, fullSet: 12640 }, // sheet reads "R1 040" — assumed R10 040, confirm
+  { code: "P44", size: "105x30", headBase: null, fullSet: 12640 },
   { code: "P45", size: "90x60", headBase: 9340, fullSet: 11940 },
-  { code: "P46", size: "80x60", headBase: 9340, fullSet: 16370 }, // gap vs head & base looks unusual — confirm
-  { code: "P47", size: "80x60", headBase: 11370, fullSet: 14980 }, // sheet reads "R1 370" — assumed R11 370, confirm
-  { code: "P48", size: "100x60", headBase: 12380, fullSet: 18600 }, // sheet reads "1000x60" — assumed 100x60, confirm
+  { code: "P46", size: "80x60", headBase: 9340, fullSet: 16370 },
+  { code: "P47", size: "80x60", headBase: null, fullSet: 14980 },
+  { code: "P48", size: "100x60", headBase: null, fullSet: 18600 },
   { code: "P49", size: "80x60", headBase: 14440, fullSet: 17040 },
   { code: "P50", size: null, headBase: 13090, fullSet: 15690 },
   { code: "P51", size: null, headBase: 9350, fullSet: 11950 },
@@ -71,8 +69,8 @@ export const tombstones: Tombstone[] = [
   { code: "P53", size: null, headBase: 24150, fullSet: 33000 },
   { code: "P54", size: null, headBase: null, fullSet: null }, // blank on the source sheet
   { code: "P55", size: null, headBase: 47000, fullSet: 50000 },
-  { code: "P56", size: null, headBase: 40000, fullSet: 44000 }, // sheet reads "R44 00" — assumed R44 000, confirm
-  { code: "P57", size: null, headBase: 44000, fullSet: 47500 }, // sheet reads "R44 00" — assumed R44 000, confirm
+  { code: "P56", size: null, headBase: null, fullSet: null },
+  { code: "P57", size: null, headBase: null, fullSet: null },
   { code: "P58", size: null, headBase: null, fullSet: null }, // blank on the source sheet
   { code: "P59", size: null, headBase: null, fullSet: null }, // blank on the source sheet
   { code: "P60", size: null, headBase: 13000, fullSet: 16500 },
@@ -83,10 +81,9 @@ export const tombstones: Tombstone[] = [
  * Catalogue codes with a photo page in the physical catalogue.
  * Photos for P33–P36 and P41+ are not available yet ("photo coming soon").
  *
- * PRIVACY: the real catalogue photos show headstones bearing the names and dates
- * of deceased people. Do NOT publish real photos without the family's consent.
- * TODO: obtain consent (or use cropped/abstract detail shots) before adding files
- * to `public/tombstones/{code}.jpg`.
+ * Add a photo by dropping a file at `public/tombstones/{code}.jpg`.
+ * Confirmed by the client: the names and dates shown on the catalogue
+ * headstones are fictional, so the photos can be published as-is.
  */
 const COVERED = new Set([
   ...Array.from({ length: 32 }, (_, i) => `P${i + 1}`),
